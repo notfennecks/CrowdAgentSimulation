@@ -1,0 +1,171 @@
+% This is an example manuscript for the SUNY Poly style options
+%       sunypoly_ms.sty (Masters Thesis or Project)
+
+\documentclass[letterpaper,11pt]{report}
+\usepackage{sunypolyms}       % For Master's papers
+\usepackage{ulem}       % underlining on style-page; see \normalem below
+\usepackage{url}	% support for hyperlinks, especially in bibliography
+\usepackage{pstricks}
+\usepackage{epsfig}
+\graphicspath{{./Figures/}} % This is the folder where figures are expected to go
+
+% If this is a Master's project rather than a thesis, 
+% uncomment this line.
+%\isproject{true}
+
+% Adjust placement of text frame to match your software and hardware.
+% Usually 1.5in on left, 1in on right and bottom.  You may not need
+% to uncomment this section.  Home printing systems are notorious for
+% incorrectly placed margins due to paper loading and/or slipping
+% problems
+%
+%\addtolength{\oddsidemargin}{.2in}
+%    \setlength{\evensidemargin}{\oddsidemargin}
+%\addtolength{\topmargin}{-.1in}
+
+
+% May want theorems numbered by chapter
+\newtheorem{theorem}{Theorem}[chapter]
+
+% Put the title, author, and date in. 
+\title{Sample Manuscript for the SUNY Poly Style Files}
+\author{Your Name Here}
+\date{May 9, 2021} % date is the date of graduation
+
+% List previous degrees here, one \previousdegree for each degree.
+%\previousdegree{M.A., University of Nebraska--Lincoln, 1984}
+\previousdegree{B.S., SUNY Polytechnic Institute, 2019}
+
+% Put the Thesis Adviser here. 
+\advisor{Michael J. Reale}
+
+
+% Put the committee here (including the advisor), one \professor for each. 
+% The advisor must be SECOND!!!
+\professor{Amos Confer\\
+Associate Professor\\
+Department of Computer \& Information Science}
+
+\professor{Michael J. Reale, Chair\\
+Associate Professor \\
+Department of Computer \& Information Science}
+
+\professor{Christopher Urban\\
+Lecturer \\
+Department of Computer \& Information Science}
+
+% Information for style-page
+% Note: Due to the way underlining is handled, any "extra" braces here will
+% create a box which cannot be broken across lines. The \style argument below
+% shows how emphasis should be done.
+
+\style{Journal of Approximation Theory (together with the style known as
+``sunypolyms'').  Bibliography follows van Leunen's {\it A} {\it Handbook}
+{\it for} {\it Scholars}.}
+
+\software{The document preparation package \TeX{} (specifically \LaTeX2e)
+together with the style-file {\tt sunypolyms.sty}.}
+
+
+
+\begin{document}
+
+% Uncomment the "nocite" line to have all entries in your bibliography listed,
+% regardless of whether they were cited.  This is often helpful in discovering
+% you had not referenced a source you intended, especially if, like me,
+% you add useful sources to your bibliography file as you discover them.  If
+% you don't add sources to your bibliography until you write text that cites
+% them, you may never need this line.
+%
+%\nocite{*}
+
+\begin{romanpages}      % roman-numbered pages 
+\ApprovalPage   % May comment-out until final version.
+\TitlePage 
+\CopyrightPage  % Should do nothing for Ph.D., if the degree is ever offered
+
+% This should be a paragraph-style history of your academic work and
+% industry efforts that may have contributed to your reaching this
+% stage in your academic career.  
+%
+% Note that this is a special chapter style that must begin and end 
+% the "vita" LaTeX environment.
+%
+\input{i_vita}
+
+% This should be a very high level overview of the novel work presented
+% in your manuscript.  Experiments should be outlined with the utmost brevity
+% and only their most compelling results revealed.  Often the results
+% identified here will lack numeric values which are saved for the Introduction
+% chapter. 
+%
+% Note that this is a special chapter style that must begin and end 
+% the "abstract" LaTeX environment.
+%
+\input{ii_abstract}
+
+% Acknowledge and dedicate you work to whomever you wish.  It is common to
+% identify those who significantly advised your work by name and at least 
+% recognize your advisory committee as a whole.  This chapter is personal, 
+% however, so a simple "R.I.P. Johhny Cash" is completely acceptable.
+%
+% Note that this is a special chapter style that must begin and end 
+% the "acknowledgments" LaTeX environment.
+%
+\input{iii_acknowledgments}
+
+\StylePage
+\tableofcontents
+
+% comment either of the following lines should your manuscript contain no 
+% figures or tables
+%
+\listoffigures
+\listoftables
+
+\end{romanpages}        % All done with roman-numbered pages
+
+
+\normalem       % Make italics the default for \em
+
+
+% Introduction ((((( required! )))))
+\input{01_introduction}
+
+% Related work ((((( required! )))))
+\input{02_related_work}
+
+% Method 
+%
+\input{03_method}
+
+% Experiments and Results
+%
+\input{04_results}
+
+% What aspects of the problem did you solve or not solve? ((((( !REQUIRED! ))))) 
+% What are the anticipated benefits of this? ((((( !REQUIRED! ))))) 
+%
+\input{05_conclusion}
+
+% NEXT STEPS SHOULD SOMEONE CONTINUE THIS WORK ((((( required! )))))
+%
+\include{06_future_work}
+
+\bibliographystyle{plain}
+% change the following to whatever your .bib filename is (minus the ".bib")
+\bibliography{myreferences}
+
+
+\begin{appendix}
+\chapter*{Appendices\addcontentsline{toc}{chapter}{Appendices}}
+\begin{singlespace}
+
+% You should have as many chapters as you need organized into separate files.
+\input{07_appendix}
+
+\end{singlespace}
+\end{appendix}
+
+\end{document}
+

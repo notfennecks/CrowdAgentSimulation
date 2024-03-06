@@ -1,0 +1,6 @@
+all:
+	touch Makefile.code.junk
+clean:
+	rm -f Makefile.code.junk
+
+

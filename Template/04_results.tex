@@ -1,0 +1,54 @@
+\chapter{Experiments and Results}
+This is where you specifically describe how you verified your work.  Some of these sections may be named slightly differently and/or have different contents, but the overall trend is the same.
+
+\section{Data}
+Where appropriate, you should have a section describing the dataset(s) you used.  Begin by describing the dataset as a whole, and then narrow down to what you did to the dataset before the experiments (e.g., number of subjects used, leave-one-out vs. 10-fold cross validation, etc.).  Feel free to split this discussion into subsections, such as "The Flintstone Dataset" and "Data Preparation".
+
+\section{Parameters}
+This section may be called "Training Parameters" or something similar, but describe the specific parameters of your experiments (e.g., how many epochs, batch size, learning rate, etc.).
+
+\section{Results}
+It is strongly recommended that you split this into different subsections if you have multiple sets of experiments you have tried.
+
+Charts and figures are welcome, but in particular tables with results are critical.  See Table \ref{tbl_example} for an example of a table in \LaTeX.
+
+Ideally, you should compare your results to that of the state of the art.  While success is not always guaranteed in research, at minimum you should be aware of how your work stacks up against that of other researchers.
+
+\textbf{Discuss your results.}  Do not throw tables and numbers at the reader without some discussion of trends, positive points, negative points, etc.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c||c|c|c|}
+\hline
+Profile	&	Population Size	&	Aging Decay	&	Activity Regions	\\
+\hline \hline 
+A	&	40	&	0	&	Static	\\
+B	&	40	&	0	&	Dynamic	\\
+C	&	40	&	0.0001	&	Static	\\
+D	&	40	&	0.0001	&	Dynamic	\\
+\hline
+E	&	30	&	0	&	Static	\\
+F	&	30	&	0	&	Dynamic	\\
+G	&	30	&	0.0001	&	Static	\\
+H	&	30	&	0.0001	&	Dynamic	\\
+\hline
+I	&	20	&	0	&	Static	\\
+J	&	20	&	0	&	Dynamic	\\
+K	&	20	&	0.0001	&	Static	\\
+L	&	20	&	0.0001	&	Dynamic	\\
+\hline
+M	&	10	&	0	&	Static	\\
+N	&	10	&	0	&	Dynamic	\\
+O	&	10	&	0.0001	&	Static	\\
+P	&	10	&	0.0001	&	Dynamic	\\
+\hline
+Q	&	3	&	0	&	Static	\\
+R	&	3	&	0	&	Dynamic	\\
+S	&	3	&	0.0001	&	Static	\\
+T	&	3	&	0.0001	&	Dynamic	\\
+\hline
+\end{tabular}
+\caption{An example table from Dr. Confer's dissertation \cite{confer_2005_activity}}
+\label{tbl_example}
+\end{center}
+\end{table}

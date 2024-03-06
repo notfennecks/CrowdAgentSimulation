@@ -1,0 +1,41 @@
+\chapter{Method}
+
+In this chapter, you should clearly discuss what your approach to solving the problem was.  Obviously, the contents of this section will vary significantly depending on the nature of the problem.  However, there are some common themes.
+
+\section{Background}
+
+Your target audience is someone with a computer science background who does not necessarily have specialization in your subarea (e.g., if your work is about machine learning, they may understand it in broad strokes, but may not know specifically what a neural network is or how it works).  This section is intended to provide enough background such that 1) your reader understands enough to understand your work and 2) you clearly understand your chosen area of interest.
+
+\subsection{Project Writers}
+While you should cite relevant software packages you utilize, the point of this section is NOT to explain the strengths/advantages of those software packages (e.g., do not give a summary of the virtues of NumPy \cite{harris2020array}).  Instead, you should focus on the underlying approaches that are directly and theoretically relevant to your work.  For example, if you use TensorFlow \cite{tensorflow2015-whitepaper} to build a Convolutional Neural Network (CNN), you should briefly discuss what a CNN is and how it works, not necessarily how TensorFlow the library works (unless, again, that is DIRECTLY relevant to your work, e.g., you have extended TensorFlow to optimize it).
+
+\subsection{Thesis Writers}
+Since you are writing a thesis, it is expected that your work has a strong mathematical and theoretical foundation to build upon.  Consequently, this section should contain sufficient mathematical background for the reader to understand your contribution.
+
+\subsection{A Word on Diagrams, Figures, and Tables}
+Diagrams and figures are welcome here, but there are a few things to note:
+\begin{enumerate}
+    \item All diagrams/figures/tables should have captions.
+    \item Any diagram/figure from another source MUST cite their source in the caption.
+    \item If you have a diagram, figure, or table, you MUST refer to it in-text and cite it using the \textbackslash ref command.  For example: ``See Figure \ref{LSTMExample} for an example of an LSTM network."
+\end{enumerate}
+
+\begin{figure}
+\begin{center}
+\includegraphics[height=0.50\textwidth]{lstm.png}
+\end{center}
+\caption{Example of LSTM Network \cite{lstmpaper}}
+\label{LSTMExample}
+\end{figure}
+
+\subsubsection{A Further Word on Sub-Sub-Sections}
+They exist.  Organize accordingly.
+
+\section{Architecture/Structure}
+Here you should describe the core of your approach.  In particular, you should describe what sets your approach apart from others.
+
+In general, defer experiment-specific parameters until the "Experiments and Results" section.  Also, unless your work is specifically about generating data, defer discussions about datasets used until "Experiments and Results" as well.
+
+Apart from small snippets, \textbf{you should NOT have your code copied and pasted into the body of this document}.  Your job here is describe in English what you have done; including most or all of your code is unhelpful and artificially inflates the size of the document. 
+
+
