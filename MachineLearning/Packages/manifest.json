@@ -2,8 +2,8 @@
   "dependencies": {
     "com.unity.collab-proxy": "2.2.0",
     "com.unity.feature.development": "1.0.2",
-    "com.unity.ml-agents": "file:Z:/SunyPoly/Spring2024/MasterProject/ml-agents/com.unity.ml-agents",
-    "com.unity.ml-agents.extensions": "file:Z:/SunyPoly/Spring2024/MasterProject/ml-agents/com.unity.ml-agents.extensions",
+    "com.unity.ml-agents": "file:Z:/SunyPoly/Spring2024/CS598/ml-agents/com.unity.ml-agents",
+    "com.unity.ml-agents.extensions": "file:Z:/SunyPoly/Spring2024/CS598/ml-agents/com.unity.ml-agents.extensions",
     "com.unity.timeline": "1.8.6",
     "com.unity.ugui": "2.0.0",
     "com.unity.visualscripting": "1.8.0",

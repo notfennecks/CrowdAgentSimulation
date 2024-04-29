@@ -70,7 +70,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ml-agents": {
-      "version": "file:Z:/SunyPoly/Spring2024/MasterProject/ml-agents/com.unity.ml-agents",
+      "version": "file:Z:/SunyPoly/Spring2024/CS598/ml-agents/com.unity.ml-agents",
       "depth": 0,
       "source": "local",
       "dependencies": {
@@ -81,7 +81,7 @@
       }
     },
     "com.unity.ml-agents.extensions": {
-      "version": "file:Z:/SunyPoly/Spring2024/MasterProject/ml-agents/com.unity.ml-agents.extensions",
+      "version": "file:Z:/SunyPoly/Spring2024/CS598/ml-agents/com.unity.ml-agents.extensions",
       "depth": 0,
       "source": "local",
       "dependencies": {
