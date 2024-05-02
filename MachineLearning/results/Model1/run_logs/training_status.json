@@ -1,0 +1,29 @@
+{
+    "CrowdSim": {
+        "checkpoints": [
+            {
+                "steps": 10862,
+                "file_path": "results\\Model1\\CrowdSim\\CrowdSim-10862.onnx",
+                "reward": -3.3192498609423637,
+                "creation_time": 1714644658.0657055,
+                "auxillary_file_paths": [
+                    "results\\Model1\\CrowdSim\\CrowdSim-10862.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 10862,
+            "file_path": "results\\Model1\\CrowdSim.onnx",
+            "reward": -3.3192498609423637,
+            "creation_time": 1714644658.0657055,
+            "auxillary_file_paths": [
+                "results\\Model1\\CrowdSim\\CrowdSim-10862.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

@@ -8,6 +8,10 @@ using Unity.VisualScripting;
 
 public class CrowdSimAgent : Agent
 {
+    //Used for grouping agents
+    public int groupId;
+
+    //For checking if agent readched the goal
     public bool reachedGoal = false;
 
     [SerializeField] private Transform goalTransform;
@@ -24,31 +28,40 @@ public class CrowdSimAgent : Agent
     private Rigidbody rb;
     private List<Vector3> previousPositions;
 
-    // Reward percentages for different behaviors
-    private float rewardForMovingCloser = 0.01f;
-    private float rewardForSmoothMovement = 0.001f;
-    private float rewardForCollision = 4.0f;
-    private float rewardForGoal = 6.0f;
-    private float rewardForPersoanlSpace = 0.2f;
+    // Reward percentages for different behaviors (reward values are relative to each other)
+    private float rewardForMovingCloser = 0.01f; //applied every action
+    private float rewardForSmoothMovement = 0.001f; //applied every "smoothCheckAmount" frames
+    private int smoothCheckAmount = 10; //The amount of frames for each smoothMovement check
+    private float rewardForCollision = 0.4f; //Applied every time agent hits an obstacle
+    private float rewardForGoal = 1.0f; //Applied once per episode when the agent arrives at the goal
+    private float rewardForAgentAvoidance = 0.1f; //Applied every time an agent gets within a certain distance of another agent
 
+    //Called once when the agent is first initialized
     public override void Initialize()
     {
+        //Store rigid body component of agent
         rb = GetComponent<Rigidbody>();
         previousPositions = new List<Vector3>();
         startPos = transform.localPosition;
     }
 
+    //Runs every frame
     void FixedUpdate()
     {
+        //Record current position
         recordPosition();
 
         //Check for smooth movement periodically
-        if (Time.frameCount % 10 == 0 && previousPositions.Count >= 10)
+        if (Time.frameCount % smoothCheckAmount == 0 && previousPositions.Count >= 10)
         {
             checkSmoothMovement();
         }
+        //Adjusting spped dynamically
+        currentSpeed = moveSpeed;
     }
 
+
+    //Soley used for apply basic movement to agent
     void applyMovement(float moveX, float moveZ)
     {
         moveDirection = new Vector3(moveX, 0, moveZ).normalized;
@@ -56,7 +69,8 @@ public class CrowdSimAgent : Agent
         float targetSpeed = moveDirection.magnitude * moveSpeed;
         currentSpeed = targetSpeed;
 
-        //Simple movement of the agent added acceleration and decceleration to model more closely how people move
+        //Simple movement of the agent 
+        //Should add acceleration and decceleration to model to mimic more closely how people move
         transform.localPosition += moveDirection * currentSpeed * Time.deltaTime;
 
         //Solely for rotating model to visual direction agent is going
@@ -76,12 +90,14 @@ public class CrowdSimAgent : Agent
         previousPositions.Add(transform.position);
     }
 
+    //Used for penalizing agent for making eratic movement
     void checkSmoothMovement()
     {
+        //Gets the velocity difference from the current to the last
         Vector3 velocity = (previousPositions[previousPositions.Count - 1] - previousPositions[0]) / Time.fixedDeltaTime;
 
         //Check for smooth movement based on velocity magnitude
-        float smoothnessThreshold = 280.0f; // Adjust threshold as needed
+        float smoothnessThreshold = 250.0f; // Adjust threshold as needed
         if (velocity.magnitude < smoothnessThreshold)
         {
             //Penalize agent for lack of smooth movement
@@ -102,6 +118,7 @@ public class CrowdSimAgent : Agent
         //the second float on the action buffer refers to movement on the z
         float moveZ = actions.ContinuousActions[1];
 
+        //Apply movement based on the action buffer
         applyMovement(moveX, moveZ);
 
         //We need to compare distance from last action to current distance to see if we are getting closer
@@ -112,24 +129,28 @@ public class CrowdSimAgent : Agent
         lastDistance = currentDistance;
     }
 
-    //Used to provide custom decision maing logic or apply manual control of an agent
+    //Used to provide custom decision logic or apply manual control of an agent
+    //Only runs when agent "Inference Type" is set to Heuristic only
     public override void Heuristic(in ActionBuffers actionsOut)
     {
+        //We can move the agent with our keyboard for testing
         ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
         continuousActions[0] = Input.GetAxisRaw("Horizontal");
         continuousActions[1] = Input.GetAxisRaw("Vertical");
     }
 
+    //Called at the beginning of every epsiode
+    //Here we want to reset positions of gameobjects
     public override void OnEpisodeBegin()
     {
         transform.localPosition = startPos;
         reachedGoal = false;
 
-        //No Longer needed as we already trained model on randomness navigation
+        //Randomize parameters so agent does not learn to go to a certain position
         //Randomize Agent position
-        //transform.localPosition = new Vector3(Random.Range(-9.8f, 12.0f), 0, Random.Range(-2.5f, 8.1f));
+        //transform.localPosition = new Vector3(Random.Range(-9.5f, 6.5f), 1.5f, Random.Range(-13.5f, 2.5f));
         //Randomize goal position
-        //goalTransform.localPosition = new Vector3(Random.Range(-9.17f, 10.6f), -2.787638f, Random.Range(-1.2f, 8.2f));
+        //goalTransform.localPosition = new Vector3(Random.Range(-9.5f, 6.5f), 0.5f, Random.Range(-13.5f, 2.5f));
 
         //Randomize agent speed to more closely mimic realism
         moveSpeed = Random.Range(2f, 4f);
@@ -140,6 +161,11 @@ public class CrowdSimAgent : Agent
     }
 
     //What data does the agent need to effectively simulate a crowd?
+    /*
+    - Its current position
+    - Its target position
+    - ...
+    */
     public override void CollectObservations(VectorSensor sensor)
     {
         //Observe current position
@@ -150,21 +176,37 @@ public class CrowdSimAgent : Agent
 
     private void OnTriggerEnter(Collider other)
     {
+        //Used for reward agent for avoiding getting within close proximity of other agents
         if(other.tag == "PersonalSpace")
         {
-            AddReward(-rewardForPersoanlSpace);
+            AddReward(-rewardForAgentAvoidance);
+            currentSpeed *= 0.6f;
         }
+
+        if(other.tag == "Wall")
+        {
+            Debug.Log("Hit wall");
+            AddReward(-rewardForCollision * 2);
+        }
+
+        //Penalized for hitting an obstacle
         if(other.tag == "Obstacle")
         {
+            Debug.Log("Hit obstacle");
             AddReward(-rewardForCollision);
         }
+
+        //Rewarded for getting to the goal
         else if(other.tag == "Goal")
         {
-            if(!reachedGoal)
-            {
-                AddReward(+rewardForGoal);
-            }
-            reachedGoal = true;
+        //     if(!reachedGoal)
+        //     {
+        //         AddReward(+rewardForGoal);
+        //     }
+        //     reachedGoal = true;
+            Debug.Log("Reached goal");
+            AddReward(+rewardForGoal);
+            EndEpisode();
         } 
     }
 }

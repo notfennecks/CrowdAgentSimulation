@@ -2,31 +2,31 @@
     "CrowdSim": {
         "checkpoints": [
             {
-                "steps": 499972,
-                "file_path": "results\\Test1\\CrowdSim\\CrowdSim-499972.onnx",
-                "reward": 23.951851818296646,
-                "creation_time": 1714363342.8829865,
+                "steps": 499999,
+                "file_path": "results\\Test1\\CrowdSim\\CrowdSim-499999.onnx",
+                "reward": 7.243471652057999,
+                "creation_time": 1714645624.5266118,
                 "auxillary_file_paths": [
-                    "results\\Test1\\CrowdSim\\CrowdSim-499972.pt"
+                    "results\\Test1\\CrowdSim\\CrowdSim-499999.pt"
                 ]
             },
             {
-                "steps": 500036,
-                "file_path": "results\\Test1\\CrowdSim\\CrowdSim-500036.onnx",
-                "reward": 23.951851818296646,
-                "creation_time": 1714363342.9368255,
+                "steps": 500019,
+                "file_path": "results\\Test1\\CrowdSim\\CrowdSim-500019.onnx",
+                "reward": 7.242540656888443,
+                "creation_time": 1714645624.5696576,
                 "auxillary_file_paths": [
-                    "results\\Test1\\CrowdSim\\CrowdSim-500036.pt"
+                    "results\\Test1\\CrowdSim\\CrowdSim-500019.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 500036,
+            "steps": 500019,
             "file_path": "results\\Test1\\CrowdSim.onnx",
-            "reward": 23.951851818296646,
-            "creation_time": 1714363342.9368255,
+            "reward": 7.242540656888443,
+            "creation_time": 1714645624.5696576,
             "auxillary_file_paths": [
-                "results\\Test1\\CrowdSim\\CrowdSim-500036.pt"
+                "results\\Test1\\CrowdSim\\CrowdSim-500019.pt"
             ]
         }
     },

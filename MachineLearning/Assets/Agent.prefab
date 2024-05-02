@@ -51,7 +51,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3563603858131737429
 GameObject:
@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 6546354597571879025}
   - component: {fileID: 3367718326159702619}
   - component: {fileID: 1589180785836104409}
+  - component: {fileID: 7404046802489452208}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Agent
@@ -83,7 +84,7 @@ Transform:
   m_GameObject: {fileID: 3563603858131737429}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -155,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BrainParameters:
     VectorObservationSize: 6
-    NumStackedVectorObservations: 4
+    NumStackedVectorObservations: 2
     m_ActionSpec:
       m_NumContinuousActions: 2
       BranchSizes: 
@@ -163,14 +164,14 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: d6988ab3486ef5c47b5acd21febdf106, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 2
+  m_BehaviorType: 0
   m_BehaviorName: CrowdSim
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 0
+  m_DeterministicInference: 1
   m_ObservableAttributeHandling: 0
 --- !u!114 &3367718326159702619
 MonoBehaviour:
@@ -187,7 +188,8 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 1000
+  MaxStep: 2000
+  groupId: 0
   reachedGoal: 0
   goalTransform: {fileID: 0}
 --- !u!114 &1589180785836104409
@@ -205,6 +207,34 @@ MonoBehaviour:
   DecisionPeriod: 5
   DecisionStep: 0
   TakeActionsBetweenDecisions: 1
+--- !u!114 &7404046802489452208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563603858131737429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor
+  m_DetectableTags: []
+  m_RaysPerDirection: 2
+  m_MaxRayDegrees: 135
+  m_SphereCastRadius: 0.5
+  m_RayLength: 2
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  m_ObservationStacks: 1
+  m_AlternatingRayOrder: 1
+  m_UseBatchedRaycasts: 0
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0
+  m_EndVerticalOffset: 0
 --- !u!1 &3950889446201261665
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +740,7 @@ Transform:
   - {fileID: 6452396413569947629}
   - {fileID: 1117924403703416687}
   - {fileID: 5547503740488752566}
+  - {fileID: 5598932056074641045}
   m_Father: {fileID: 2835215045866839202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2185111974631631549
@@ -764,3 +795,65 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &7031270515369683683
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1857543188719728003}
+    m_Modifications:
+    - target: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.995
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.645
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.155
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892336488084509985, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+      propertyPath: m_Name
+      value: Cap
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+--- !u!4 &5598932056074641045 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3181635140722488438, guid: bac2029b36ca38c469ef60b4aa4afeaa, type: 3}
+  m_PrefabInstance: {fileID: 7031270515369683683}
+  m_PrefabAsset: {fileID: 0}
