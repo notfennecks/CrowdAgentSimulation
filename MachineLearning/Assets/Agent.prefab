@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 6546354597571879025}
   - component: {fileID: 3367718326159702619}
   - component: {fileID: 1589180785836104409}
-  - component: {fileID: 7404046802489452208}
+  - component: {fileID: 59993981310943547}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Agent
@@ -171,7 +171,7 @@ MonoBehaviour:
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 1
+  m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
 --- !u!114 &3367718326159702619
 MonoBehaviour:
@@ -188,10 +188,22 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 2000
-  groupId: 0
+  MaxStep: 3000
   reachedGoal: 0
   goalTransform: {fileID: 0}
+  rewardForAlignment: 0.05
+  rewardForCohesion: 0.05
+  minSpeed: 1
+  maxSpeed: 0
+  safeDistance: 2
+  acceleration: 1
+  deceleration: 2
+  separationRadius: 2
+  alignmentRadius: 5
+  cohesionRadius: 5
+  separationWeight: 1
+  alignmentWeight: 1
+  cohesionWeight: 1
 --- !u!114 &1589180785836104409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,10 +216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 5
+  DecisionPeriod: 3
   DecisionStep: 0
   TakeActionsBetweenDecisions: 1
---- !u!114 &7404046802489452208
+--- !u!114 &59993981310943547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,20 +232,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SensorName: RayPerceptionSensor
-  m_DetectableTags: []
-  m_RaysPerDirection: 2
-  m_MaxRayDegrees: 135
+  m_DetectableTags:
+  - Agent
+  - Wall
+  m_RaysPerDirection: 3
+  m_MaxRayDegrees: 50
   m_SphereCastRadius: 0.5
-  m_RayLength: 2
+  m_RayLength: 4
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 4294967240
   m_ObservationStacks: 1
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0
   rayHitColor: {r: 1, g: 0, b: 0, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 0
+  m_StartVerticalOffset: 0.5
   m_EndVerticalOffset: 0
 --- !u!1 &3950889446201261665
 GameObject:
@@ -732,7 +746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8474278707095114719}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -742,7 +756,7 @@ Transform:
   - {fileID: 5547503740488752566}
   - {fileID: 5598932056074641045}
   m_Father: {fileID: 2835215045866839202}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &2185111974631631549
 MeshFilter:
   m_ObjectHideFlags: 0

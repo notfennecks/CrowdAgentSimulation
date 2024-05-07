@@ -1,0 +1,29 @@
+{
+    "CrowdSim": {
+        "checkpoints": [
+            {
+                "steps": 15703,
+                "file_path": "results\\uObstacle2\\CrowdSim\\CrowdSim-15703.onnx",
+                "reward": -130.85099977254868,
+                "creation_time": 1715104528.6567948,
+                "auxillary_file_paths": [
+                    "results\\uObstacle2\\CrowdSim\\CrowdSim-15703.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 15703,
+            "file_path": "results\\uObstacle2\\CrowdSim.onnx",
+            "reward": -130.85099977254868,
+            "creation_time": 1715104528.6567948,
+            "auxillary_file_paths": [
+                "results\\uObstacle2\\CrowdSim\\CrowdSim-15703.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
