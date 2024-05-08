@@ -1,0 +1,47 @@
+{
+    "CrowdSim": {
+        "checkpoints": [
+            {
+                "steps": 49978,
+                "file_path": "results\\ObstaclesTest1\\CrowdSim\\CrowdSim-49978.onnx",
+                "reward": -0.4029165928562482,
+                "creation_time": 1715198043.1296384,
+                "auxillary_file_paths": [
+                    "results\\ObstaclesTest1\\CrowdSim\\CrowdSim-49978.pt"
+                ]
+            },
+            {
+                "steps": 99967,
+                "file_path": "results\\ObstaclesTest1\\CrowdSim\\CrowdSim-99967.onnx",
+                "reward": -1.2696874486282468,
+                "creation_time": 1715198066.662108,
+                "auxillary_file_paths": [
+                    "results\\ObstaclesTest1\\CrowdSim\\CrowdSim-99967.pt"
+                ]
+            },
+            {
+                "steps": 111871,
+                "file_path": "results\\ObstaclesTest1\\CrowdSim\\CrowdSim-111871.onnx",
+                "reward": null,
+                "creation_time": 1715198130.3917494,
+                "auxillary_file_paths": [
+                    "results\\ObstaclesTest1\\CrowdSim\\CrowdSim-111871.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 111871,
+            "file_path": "results\\ObstaclesTest1\\CrowdSim.onnx",
+            "reward": null,
+            "creation_time": 1715198130.3917494,
+            "auxillary_file_paths": [
+                "results\\ObstaclesTest1\\CrowdSim\\CrowdSim-111871.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

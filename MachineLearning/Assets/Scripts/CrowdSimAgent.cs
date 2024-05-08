@@ -34,9 +34,9 @@ public class CrowdSimAgent : Agent
     // Reward percentages for different behaviors (reward values are relative to each other)
     private float rewardForGoal = 30.0f; //Applied once per episode when the agent arrives at the goal
     private float rewardForMovingCloser = 0.05f; //applied every action
-    private float rewardForSmoothMovement = 0.001f; //applied every "smoothCheckAmount" frames
+    private float rewardForSmoothMovement = 0.005f; //applied every "smoothCheckAmount" frames
     private int smoothCheckAmount = 10; //The amount of frames needed for each smoothMovement check (higher values mean it is checked less often and reward are applied less often)
-    private float rewardForCollision = 0.4f; //Applied every time agent hits an obstacle
+    private float rewardForCollision = 0.6f; //Applied every time agent hits an obstacle
     private float rewardForAgentAvoidance = 0.1f; //Applied every time an agent gets within a certain distance of another agent
     public float rewardForAlignment = 0.05f;  //For flocking
     public float rewardForCohesion = 0.05f;  //For flocking
@@ -455,10 +455,10 @@ public class CrowdSimAgent : Agent
         //Penalized for hitting an obstacle
         if(other.gameObject.tag == "Obstacle")
         {
-            //Debug.Log("Reward: Hit obstacle --");
+            Debug.Log("Reward: Hit obstacle --");
             totalCollisions++;
             //Debug.Log("Hit obstacle");
-            AddReward(-rewardForCollision);
+            AddReward(-rewardForCollision * 5);
             EndEpisode();
         }
 
