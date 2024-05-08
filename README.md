@@ -1,1 +1,1 @@
-This presents methods for creating agents that can simulation realistic crowds utilizing the Unity ML-Agents framework.
+This research presents a reinforcement learning architecture for modeling and simulating more seemingly realistic crowd simulation based on how real humans make decisions.
